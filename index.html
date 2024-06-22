@@ -30,7 +30,8 @@
     
       <!-- loading the modules -->
     <script>
-      require(["esri/config", "esri/Map", "esri/views/MapView" ], function(esriConfig, Map, MapView) {
+      require(["esri/config", "esri/Map", "esri/views/MapView", "esri/widgets/Locator"
+       ], function(esriConfig, Map, MapView, Locate) {
 
           //adding in API Key
           esriConfig.apiKey = "AAPKba612eedccd74bbabe0e040dec19190bkMVVICJGBITVVx-yRWPSKUO0HiwM3rEFvcZUZ52GBZfyakj41U9ixXAI3lslJLyo";
@@ -44,6 +45,15 @@
               map: map, //references the map object
               center: [-87.9, 43.0], //longitude, latitude
               zoom: 12 //zoom level
+          });
+
+          const locateBtn = new Locate({
+            view: view
+          });
+
+          //add the locate widget to the top left corner
+          view.ui.add(locateBtn, {
+            position: "top-left"
           });
       });
     </script>   
